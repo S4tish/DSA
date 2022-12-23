@@ -1,0 +1,65 @@
+package src.com.company;
+// Reverse a Linked list
+
+// Approach
+// 1 Initialize three pointers prev as NULL, curr as head and next as NULL
+// 2 Iterate through the linked list.In loop do following
+// 2.1 Before changing next of current
+// 2.2 Store next node
+// 2.3 next=curr->next
+// 2.4 Now change next of current
+// 2.5 This is where actual reversing happens
+// 2.6 curr->next=prev
+// 2.7 Move prev and curr one step forward
+// 2.8 prev=curr
+// 2.9 curr=next
+
+public class ReverseALinkedList {
+    static Node head;
+    static class Node{
+        int data;
+        Node next;
+        Node(int d){
+            data=d;
+            next=null;
+        }
+    }
+    Node reverse(Node node){
+        Node prev=null;
+        Node current=node;
+        Node next=null;
+        while(current!=null){
+            next=current.next;
+            current.next=prev;
+            prev=current;
+            current=next;
+        }
+        node =prev;
+        return node;
+    }
+
+    /// print content of double linked list
+    void printList(Node node){
+        while(node!=null){
+            System.out.print(node.data+ " ");
+            node=node.next;
+        }
+    }
+
+    public static void main(String[] args) {
+        ReverseALinkedList list=new ReverseALinkedList();
+        list.head=new Node(85);
+        list.head.next=new Node(15);
+        list.head.next.next=new Node(23);
+        list.head.next.next.next=new Node(67);
+
+        System.out.println("Given Linked list are");
+        list.printList(head);
+        head=list.reverse(head);
+        System.out.println(" ");
+        System.out.println("Reversed linked are : ");
+        list.printList(head);
+    }
+}
+// Time complexity O(N)
+// Auxiliary Space O(1)
