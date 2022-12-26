@@ -1,0 +1,35 @@
+package src.com.company;
+// Generating subarray using recursion
+
+// approach
+// Using two pointer approach 
+
+public class GeneratingSubarray {
+
+    // Recursion function to print all the subarray
+    static void printSubArrays(int[] arr, int start, int end){
+
+        // stop if we gave reached the end of the array
+        if(end==arr.length)
+            return;
+
+        // Increment the end point and start from 0
+        else if(start>end)
+            printSubArrays(arr,0,end+1);
+
+        //print the subarray and increment the starting point
+        else{
+            System.out.print("[");
+            for(int i=start;i<end;i++)
+                System.out.print(arr[i] + " , ");
+            System.out.println(arr[end] + "]");
+            printSubArrays(arr,start+1,end);
+        }
+        return;
+    }
+
+    public static void main(String[] args) {
+        int[] arr={1,2,3};
+        printSubArrays(arr,0,0);
+    }
+}
