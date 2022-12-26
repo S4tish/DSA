@@ -1,0 +1,23 @@
+package src.com.company;
+// Q Find the largest element in an array
+
+// Approach (Using Sorting)
+// we can sort the array in ascending order hence the largest element will be at the last index of the array
+// 1 Sort the array in ascending order
+// 2 Print the (size of the array-1)th index
+
+import java.util.Arrays;
+public class TCSNQT2 {
+    static int sort(int arr[]){
+        Arrays.sort(arr);
+        return arr[arr.length-1];
+    }
+
+    public static void main(String[] args) {
+        int arr[]={1,5,7,4,7,3,7,9,4,};
+        System.out.println("The largest number in an array is " + sort(arr));
+    }
+}
+
+// Time complexity=O(Nlog(N))
+// Space complexity=O(n)
